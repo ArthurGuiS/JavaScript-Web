@@ -2,8 +2,6 @@ function tocaSom(idAudio) {
     document.querySelector(idAudio).play()
 }
 
-// document.querySelector('.tecla_pom').onclick = tocaSomPom //nao utiliza o () depois do tocaSomPom para nao ser executado assim que a pagina carregar
-
 const listaDeTeclas = document.querySelectorAll(".tecla")
 
 for (let i = 0; i < listaDeTeclas.length; i++) {
@@ -15,6 +13,16 @@ for (let i = 0; i < listaDeTeclas.length; i++) {
     
     tecla.onclick = function (){
         tocaSom(idAu)
+    }
+
+    tecla.onkeydown = function (evento){
+        if(evento.code === "Space" || evento.code === "Enter"){
+            tecla.classList.add("ativa")
+        }
+    }
+
+    tecla.onkeyup = function (){
+        tecla.classList.remove("ativa")
     }
     
 }
